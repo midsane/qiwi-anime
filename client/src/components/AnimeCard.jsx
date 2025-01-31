@@ -185,8 +185,8 @@ export function AnimeCard({ anime, index }) {
                                             className="rounded h-20 object-cover"
                                         />
                                         <div className="flex flex-col">
-                                            <p className="text-orange">{anime.recTitle[0].title}</p>
-                                            <p className="text-slate-300">
+                                            <p className="text-primary">{anime.recTitle[0].title}</p>
+                                            <p className="text-orange">
                                                 {anime.recTitle[0].intro.slice(
                                                     0,
                                                     Math.min(anime.recTitle[0].intro.length, 20)
