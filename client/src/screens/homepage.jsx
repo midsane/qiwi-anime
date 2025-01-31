@@ -5,6 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { CurrentPageArticlesAtom, latestArticleAtom, numberOfArticlesAtom } from "../atoms/atoms";
 import { AdminLoader } from "../components/loader";
 import { Helmet } from "react-helmet-async";
+import { AnimeLoader } from "../components/qiwiintro";
 
 const PAGE_LIMIT = 6;
 export default function HomePage() {
@@ -45,6 +46,7 @@ export default function HomePage() {
 
     return (
         <>
+          <AnimeLoader texts={["Top anime blogs", "latest animes", "trends you can't miss"]}  duration={1000} />
             <Helmet>
                 <title>Qiwi Animes - Latest Anime Recommendations</title>
                 <meta name="description" content="Discover the latest trendy animes and get recommendations for your favorite ones on Qiwi Animes." />

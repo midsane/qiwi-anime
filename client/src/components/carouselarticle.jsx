@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import { motion } from 'framer-motion'
 import "slick-carousel/slick/slick.css"
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 export function ArticlesCarousel({ title = "Recommended Articles" }) {
     const articles = useRecoilValue(latestArticleAtom)
     const navigate = useNavigate()
-
+    const [imageLoading, setImageLoading] = useState(true)
     useEffect(() => {
         window.dispatchEvent(new Event('resize'))
     }, [])
@@ -64,7 +64,7 @@ export function ArticlesCarousel({ title = "Recommended Articles" }) {
                             role="button"
                             tabIndex={0}
                             onClick={() => navigate(`/anime/${article.title}`)}
-                            className="bg-secondary rounded-lg shadow-lg overflow-hidden h-96 cursor-pointer"
+                            className="bg-dark rounded-lg shadow-lg overflow-hidden h-96 cursor-pointer"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -73,10 +73,12 @@ export function ArticlesCarousel({ title = "Recommended Articles" }) {
                         >
                             <img
                                 loading='lazy'
+                                onLoad={() => setImageLoading(false)}
                                 src={article.bannerImgLink}
                                 alt={`Banner for ${article.title}`}
                                 className="w-full h-40 object-cover"
                             />
+                            {imageLoading && <div className='absolute z-40  from-dark to-secondary bg-[length:200%_100%] animate-pulse-left-to-right top-0 left-0 w-full h-full' ></div>}
                             <div className="p-4">
                                 <h3
                                     id={`article-title-${index}`}
@@ -92,7 +94,7 @@ export function ArticlesCarousel({ title = "Recommended Articles" }) {
                                 <a
                                     aria-label={`Read full article: ${article.title}`}
                                     href={`/anime/${article.title}`}
-                                    className="inline-block bg-dark bg-opacity-55 active:scale-105 ease-linear 
+                                    className="inline-block bg-secondary bg-opacity-55 active:scale-105 ease-linear 
                                     text-name px-4 py-2 rounded hover:bg-opacity-100 transition-colors duration-300"
                                 >
                                     Read More

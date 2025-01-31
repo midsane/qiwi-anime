@@ -7,7 +7,7 @@ const Snowflake = ({ style }) => {
                 position: 'absolute',
                 backgroundColor: '#fff',
                 borderRadius: '50%',
-                opacity: 0.8,
+                opacity: 0.9,
                 ...style,
             }}
         />

@@ -83,6 +83,7 @@ export function RootLayout({children}){
 
     return(<div className="w-screen min-h-screen overflow-hidden">
         {loading && <AdminLoader />}
+      
         <SnowEffect />
         <Goup />
         {toastMsg !== "" &&

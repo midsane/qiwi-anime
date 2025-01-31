@@ -29,43 +29,46 @@ export const AdminLoader = ({ size = 100, color = '#3498db' }) => {
     };
 
     return (
-        ReactDOM.createPortal(<div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
-            <motion.div
-                style={{
-                    width: size,
-                    height: size,
-                    position: 'relative',
-                }}
-                variants={containerVariants}
-                animate="animate"
-                aria-label="Loading"
-                className='relative top-1/2 left-1/2'
-            >
-                <div className='w-fit h-fit absolute rounded p-1 bg-dark text-desc'><p>Loading...</p></div>
-                {circles.map((_, index) => (
-                    <motion.div
-                        key={index}
-                        style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            width: size / 5,
-                            height: size / 5,
-                            borderRadius: '50%',
-                            backgroundColor: color,
-                            transform: `rotate(${(360 / circleCount) * index}deg) translate(${size / 2.5}px) rotate(-${(360 / circleCount) * index}deg)`,
-                        }}
-                        variants={circleVariants}
-                        initial="initial"
-                        animate="animate"
-                        transition={{
-                            ...circleTransition,
-                            delay: (index / circleCount) * 2,
-                        }}
-                    />
-                ))}
-            </motion.div>
-        </div>, document.getElementById('root'))
+        ReactDOM.createPortal(<>
+            <div className='fixed z-[90] top-0 left-0 w-screen h-screen bg-dark'></div>
+            <div className='fixed z-[100] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]'>
+                <motion.div
+                    style={{
+                        width: size,
+                        height: size,
+                        position: 'relative',
+                    }}
+                    variants={containerVariants}
+                    animate="animate"
+                    aria-label="Loading"
+                    className='relative top-1/2 left-1/2'
+                >
+                    <div className='w-fit h-fit absolute rounded p-1 bg-dark text-desc'><p>Loading...</p></div>
+                    {circles.map((_, index) => (
+                        <motion.div
+                            key={index}
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                width: size / 5,
+                                height: size / 5,
+                                borderRadius: '50%',
+                                backgroundColor: color,
+                                transform: `rotate(${(360 / circleCount) * index}deg) translate(${size / 2.5}px) rotate(-${(360 / circleCount) * index}deg)`,
+                            }}
+                            variants={circleVariants}
+                            initial="initial"
+                            animate="animate"
+                            transition={{
+                                ...circleTransition,
+                                delay: (index / circleCount) * 2,
+                            }}
+                        />
+                    ))}
+                </motion.div>
+            </div>
+        </>, document.getElementById('root'))
     );
 };
 

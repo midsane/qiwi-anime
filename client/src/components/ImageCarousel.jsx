@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {ZoomIn, ZoomOut, ChevronRight, ChevronLeft} from "lucide-react"
+import { ZoomIn, ZoomOut, ChevronRight, ChevronLeft } from "lucide-react"
 
-export function ImageCarousel({ images, alt }) {
-    const [currentIndex, setCurrentIndex] = useState(images.length-1)
+export function ImageCarousel({ images, alt, onImageLoad }) {
+    const [currentIndex, setCurrentIndex] = useState(images.length - 1)
     const [isZoomed, setIsZoomed] = useState(false)
+    const [imageLoading, setImageLoading] = useState(true)
 
     const nextImage = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
@@ -29,20 +30,27 @@ export function ImageCarousel({ images, alt }) {
                     transition={{ duration: 0.5 }}
                     className="absolute inset-0"
                 >
+                    {imageLoading && <div className='absolute z-40 top-0 left-0 w-full h-full  from-dark to-secondary bg-[length:200%_100%] animate-pulse-left-to-right' >
+
+                    </div>}
                     <img
                         loading='lazy'
+                        onLoad={() => {
+                            setImageLoading(false)
+                            onImageLoad(currentIndex)
+                        }}
                         src={images[currentIndex]}
                         alt={`${alt} - Image ${currentIndex + 1}`}
                         className={`relative z-0 w-full h-full object-cover transition-transform duration-300 ${isZoomed ? 'scale-150' : 'scale-100'}`}
                     />
                     <div className={`absolute rounded
                     ${isZoomed && "rounded-lg scale-125"}
-                    bottom-2 left-2 ease-linear duration-75 cursor-pointer z-10 bg-black p-2`} 
-                    onClick={toggleZoom}
+                    bottom-2 left-2 ease-linear duration-75 cursor-pointer z-10 bg-black p-2`}
+                        onClick={toggleZoom}
                     >
                         {isZoomed ? <ZoomOut color='white' /> : <ZoomIn color='white' />}
                     </div>
-                    
+
                 </motion.div>
             </AnimatePresence>
             <button
@@ -58,7 +66,7 @@ export function ImageCarousel({ images, alt }) {
                 onClick={nextImage}
             >
                 <span className='flex relative justify-center items-center hover:scale-110 active:scale-75  ease-linear duration-75' >
-                   <ChevronRight />
+                    <ChevronRight />
                 </span>
             </button>
         </div>
