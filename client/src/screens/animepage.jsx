@@ -4,11 +4,11 @@ import { AnimeCard } from '../components/AnimeCard';
 import { ChevronRight, Dot } from "lucide-react";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AdminLoader } from '../components/loader';
 import { useSetRecoilState } from 'recoil';
 import { toastMsgAtom } from '../atoms/atoms';
 import { AnimeLogo } from '../components/animelogo';
 import { Helmet } from 'react-helmet-async';
+import { AnimeLoader } from '../components/qiwiintro';
 
 const Skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -91,7 +91,7 @@ export function AnimePage() {
                 </script>
             </Helmet>
             <main className="relative min-h-screen sm:p-8 p-2">
-                {loading && <AdminLoader />}
+                {loading && <AnimeLoader status='loading' />}
                 {articleInfo ? <motion.h1
                     className="text-5xl md:text-7xl font-bold text-center text-primary mb-4 float"
                     initial={{ opacity: 0, y: -50 }}

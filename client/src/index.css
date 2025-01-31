@@ -123,10 +123,6 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .anime-logo {
-    width: 32px;
-    height: 32px;
-  }
 
   .anime-eye {
     width: 16px;

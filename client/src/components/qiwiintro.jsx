@@ -6,8 +6,9 @@ import { AnimeLogo } from "./animelogo"
 
 
 export function AnimeLoader({
-    texts,
-    duration = 1000, 
+    texts=["loading..."],
+    duration = 1000,
+    status = "intro"
 }) {
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -15,7 +16,7 @@ export function AnimeLoader({
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length)
-        }, 300) 
+        }, 300)
 
         const timer = setTimeout(() => {
             setLoading(false)
@@ -34,7 +35,7 @@ export function AnimeLoader({
             {loading && (
                 <motion.div
                     className="fixed inset-0 bg-dark h-screen w-screen z-[200] flex flex-col items-center justify-center overflow-hidden"
-                
+
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -131,7 +132,7 @@ export function AnimeLoader({
                                 transformStyle: "preserve-3d",
                             }}
                         >
-                            <AnimeLogo size="large"/>
+                            <AnimeLogo size="large" />
                         </motion.div>
 
 
@@ -176,9 +177,15 @@ export function AnimeLoader({
                         exit={{ opacity: 0, y: -20 }}
                         key={currentTextIndex}
                         transition={{ duration: 0.5 }}
-                    >
-                        <h2 className="text-2xl font-bold text-desc mb-2">{texts[currentTextIndex]}</h2>
-                        <p className="text-sm text-credits">Discover the world of anime</p>
+                    >{status === "intro" ?
+                        <>
+
+                            <h2 className="text-2xl font-bold text-desc mb-2">{texts[currentTextIndex]}</h2>
+                            <p className="text-sm text-credits">Discover the world of anime</p>
+                        </>
+                        :
+                        <p>loading...</p>
+                        }
                     </motion.div>
 
                     {["忍", "者", "道", "術"].map((kanji, i) => (

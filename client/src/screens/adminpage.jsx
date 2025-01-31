@@ -7,7 +7,8 @@ import { redirect } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { articleBannerImgLinkAtom, articleIntroAtom, articleListAtom, articleTitleAtom, toastMsgAtom } from "../atoms/atoms";
 import { Button, Input, LinkTag, Tab, Tags } from "../components/utilityComponent";
-import { AdminLoader } from "../components/loader";
+import { AnimeLoader } from "../components/qiwiintro";
+
 
 
 export const Loader = async () => {
@@ -138,7 +139,7 @@ const ArticleMenu = () => {
     }
 
     return (<div className="flex justify-center items-center flex-col min-w-[40vw] max-w-screen max-h-screen p-10 rounded bg-dark gap-2">
-        {loading && <AdminLoader />}
+        {loading && <AnimeLoader status="loading" />}
         <Input limitSize={false} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" />
         <div className="max-w-32 flex gap-1 justify-center items-center" >
             <Input size="small" limitSize={false} value={bannerImgLink} onChange={(e) => setBannerImgLink(e.target.value)} placeholder="bannerImgLink" />

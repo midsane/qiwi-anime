@@ -3,7 +3,6 @@ import Pagination from "../components/pagination";
 import { RecommendedArticles } from "../components/RecommendedArticle";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { CurrentPageArticlesAtom, latestArticleAtom, numberOfArticlesAtom } from "../atoms/atoms";
-import { AdminLoader } from "../components/loader";
 import { Helmet } from "react-helmet-async";
 import { AnimeLoader } from "../components/qiwiintro";
 
@@ -57,7 +56,7 @@ export default function HomePage() {
                 <meta property="og:type" content="website" />
             </Helmet>
             <main className="flex flex-col">
-                {loading && <AdminLoader />}
+                {loading && <AnimeLoader status="loading" />}
                 <RecommendedArticles />
                 <Pagination currentPage={currentPage} totalPages={Math.ceil(numberOfArticle / PAGE_LIMIT)} onPageChange={setCurrentPage} />
             </main>

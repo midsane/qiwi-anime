@@ -6,10 +6,10 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { latestArticleAtom, numberOfArticlesAtom, toastMsgAtom } from "../atoms/atoms";
 import Footer from "../components/footer";
 import { Toast } from "../components/toaster";
-import { AdminLoader } from "../components/loader";
 import { Goup } from "../components/Goup";
 import { SnowEffect } from "../components/snowyeffect";
 import { Analytics } from "@vercel/analytics/react"
+import { AnimeLoader } from "../components/qiwiintro";
 export function RootLayout({children}){
   
     const [toastMsg, setToastMsg] = useRecoilState(toastMsgAtom)
@@ -83,7 +83,7 @@ export function RootLayout({children}){
     }, [])
 
     return(<div className="w-screen min-h-screen overflow-hidden">
-        {loading && <AdminLoader />}
+        {loading && <AnimeLoader status="loading"/>}
         <Analytics />
         <SnowEffect />
         <Goup />
