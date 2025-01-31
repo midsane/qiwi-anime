@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
+import { AnimeLogo } from "./animelogo"
 
 
 
@@ -130,11 +131,7 @@ export function AnimeLoader({
                                 transformStyle: "preserve-3d",
                             }}
                         >
-                            <img
-                                src="../../public/favicon.png"
-                                alt="Kiwi Animes Logo"
-                                className="h-48 w-48 object-contain"
-                            />
+                            <AnimeLogo size="large"/>
                         </motion.div>
 
 
