@@ -164,7 +164,7 @@ export function AnimeCard({ anime, index }) {
                     ) : (
                         anime.recTitle && anime.recTitle.length > 0 && (
                             <a
-                                href={`/anime/${anime.recTitle[0].title}`}
+                                href={`/anime/${anime.recTitle[0].title.split(" ").join("-")}`}
                                 aria-labelledby={`anime-title-${index} recommended-title`}
                                 className="mt-2 cursor-pointer flex p-4 rounded bg-secondary flex-col gap-2"
                             >

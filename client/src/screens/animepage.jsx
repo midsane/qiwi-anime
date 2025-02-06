@@ -39,7 +39,7 @@ export function AnimePage() {
                     return;
                 }
                 const data = await response.json();
-              
+
                 if (data.message) {
                     setArticleInfo(data.message[0]);
                 }
@@ -101,19 +101,24 @@ export function AnimePage() {
                 >
                     {articleInfo?.title}
                 </motion.h1> :
-                    <div className="w-full h-64 bg-background top-0 left-0 animate-pulse"></div>}
+                    <div className="w-full h-10 bg-background top-0 left-0 animate-pulse"></div>}
 
-                {articleInfo ?
-                    <motion.div className='w-full h-32 sm:h-52 overflow-hidden rounded'>
-                        <motion.div
-                            className="h-8 items-center flex gap-4 text-primary"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8, duration: 0.5 }}
-                        >
-                            <AnimeLogo />
-                            <p className='text-sm sm:text-lg'>{articleInfo?.title.slice(19, Math.min(articleInfo?.title.length, 44)) + "..."}</p>
-                        </motion.div>
+                 <motion.div className='w-full h-32 sm:h-52 overflow-hidden rounded'>
+                    {articleInfo ? 
+                    <motion.div
+                        className="h-8 items-center flex gap-4 text-primary"
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8, duration: 0.5 }}
+                    >
+                        <AnimeLogo />
+                        <p className='text-sm sm:text-lg'>{articleInfo?.title.slice(19, Math.min(articleInfo?.title.length, 44)) + "..."}</p>
+                    </motion.div> :
+
+                    <div className="w-full h-64 bg-background top-0 left-0 animate-pulse"></div>
+                    }
+
+                    {articleInfo ?
                         <div className='w-full h-24 sm:h-44 overflow-hidden bg-dark'>
                             <motion.img
                                 initial={{ opacity: 0, y: 50 }}
@@ -124,9 +129,11 @@ export function AnimePage() {
                                 alt={`Banner for ${articleInfo?.title}`}
                                 loading="lazy"
                             />
-                        </div>
-                    </motion.div> :
-                    <div className="w-full h-64 bg-background top-0 left-0 animate-pulse"></div>}
+                        </div> :
+                        <div className="w-full h-40 bg-background top-0 left-0 animate-pulse"></div>
+                    }
+                </motion.div>
+
 
                 {articleInfo ? <motion.p
                     className="text-lg sm:text-xl text-center text-desc my-14"
@@ -136,7 +143,7 @@ export function AnimePage() {
                 >
                     {articleInfo?.intro}
                 </motion.p> :
-                    <div className="w-full h-64 bg-background top-0 left-0 animate-pulse"></div>}
+                    <div className="w-[80vw] h-32 bg-background top-0 left-0 animate-pulse"></div>}
 
                 {articleInfo ?
                     <motion.div
