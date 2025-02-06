@@ -18,6 +18,7 @@ export function RootLayout({children}){
     const [loading, setLoading] = useState(false)
   
     useEffect(() => {
+    
         const getLatestArticle = async () => {
             setLoading(true)
             try {
@@ -48,6 +49,7 @@ export function RootLayout({children}){
     }, [numberOfArticle])
 
     useEffect(() => {
+        
         const getNumberOfArticles = async () => {
             setLoading(true)
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}get-number-of-article`);  

@@ -3,7 +3,7 @@ import { ArticlesCarousel } from '../components/carouselarticle';
 import { AnimeCard } from '../components/AnimeCard';
 import { ChevronRight, Dot } from "lucide-react";
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { toastMsgAtom } from '../atoms/atoms';
 import { AnimeLogo } from '../components/animelogo';
@@ -14,10 +14,11 @@ const Skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 export function AnimePage() {
-    const [articleInfo, setArticleInfo] = useState(undefined);
+    const [articleInfo, setArticleInfo] = useState(null);
     const setToastMsg = useSetRecoilState(toastMsgAtom);
     const [loading, setLoading] = useState(true);
     let { articleTitle } = useParams();
+    
 
     articleTitle = articleTitle.split("-").join(" ");
     useEffect(() => {
@@ -25,9 +26,11 @@ export function AnimePage() {
             top: 0,
             behavior: 'smooth'
         });
-        setArticleInfo(undefined)
+        setArticleInfo(null)
         const getArticleInfo = async () => {
+         
             try {
+
                 const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}article/${articleTitle}`, {
                     method: "POST",
                     headers: {
@@ -53,6 +56,8 @@ export function AnimePage() {
 
         getArticleInfo();
     }, [articleTitle]);
+
+   
 
     return (
         <>
@@ -81,7 +86,7 @@ export function AnimePage() {
                             "name": "Qiwi Animes",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "https://qiwianimes.me/logo.png"
+                                "url": "https://qiwianimes.me/favicon.png"
                             }
                         },
                         "datePublished": new Date().toISOString(),
@@ -177,3 +182,4 @@ export function AnimePage() {
         </>
     );
 }
+
