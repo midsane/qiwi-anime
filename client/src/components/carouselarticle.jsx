@@ -51,7 +51,7 @@ export function ArticlesCarousel({ title = "Recommended Articles" }) {
                             className="bg-dark rounded-lg shadow-lg overflow-hidden h-96 cursor-pointer"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            transition={{ duration: 0.5 }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
