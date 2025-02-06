@@ -10,9 +10,9 @@ export function RecommendedArticles() {
     const navigate = useNavigate()
     const articles = useRecoilValue(CurrentPageArticlesAtom)
     const [imageLoading, setImageLoading] = useState(true)
-    const pageTitle = articles?.[0]?.title || "Anime Page"
+    const pageTitle = articles?.[0]?.title || "Qiwi Animes - Your Source for Anime Reviews and News"
     const pageDescription =
-        articles?.[0]?.intro || "Explore amazing anime articles and recommendations"
+        articles?.[0]?.intro || "Qiwi Animes is your go-to source for the latest anime reviews, news, and updates. Stay tuned for the best anime content."
     const pageImage = articles?.[0]?.bannerImgLink || "/default-banner.jpg"
 
     return (

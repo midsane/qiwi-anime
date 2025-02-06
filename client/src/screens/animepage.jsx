@@ -55,8 +55,8 @@ export function AnimePage() {
     return (
         <>
             <Helmet>
-                <title>{articleInfo?.title ? `${articleInfo.title} - Qiwi Animes` : "Anime Page - Qiwi Animes"}</title>
-                <meta name="description" content={articleInfo?.intro ? `${articleInfo.intro.slice(0, 150)}...` : "Explore amazing anime articles and recommendations on Qiwi Animes."} />
+                <title>{articleInfo?.title ? `${articleInfo.title} - Qiwi Animes` : "Qiwi Animes - Your Source for Anime Reviews and News"}</title>
+                <meta name="description" content={articleInfo?.intro ? `${articleInfo.intro.slice(0, 150)}...` : "Qiwi Animes is your go-to source for the latest anime reviews, news, and updates. Stay tuned for the best anime content."} />
                 <meta name="keywords" content={`${articleInfo?.title}, anime, anime recommendations, ${articleInfo?.List?.map(a => a.name).join(", ")}`} />
                 <meta property="og:title" content={articleInfo?.title || "Qiwi Animes"} />
                 <meta property="og:description" content={articleInfo?.intro || "Explore amazing anime articles and recommendations on Qiwi Animes."} />
