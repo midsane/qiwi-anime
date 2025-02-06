@@ -16,7 +16,8 @@ export function AnimePage() {
     const [articleInfo, setArticleInfo] = useState(undefined);
     const setToastMsg = useSetRecoilState(toastMsgAtom);
     const [loading, setLoading] = useState(true);
-    const { articleTitle } = useParams();
+    let { articleTitle } = useParams();
+    articleTitle = articleTitle.split("-").join(" ");
 
     useEffect(() => {
         window.scrollTo({

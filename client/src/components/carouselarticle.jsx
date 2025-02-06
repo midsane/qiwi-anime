@@ -93,7 +93,7 @@ export function ArticlesCarousel({ title = "Recommended Articles" }) {
                                 </p>
                                 <a
                                     aria-label={`Read full article: ${article.title}`}
-                                    href={`/anime/${article.title}`}
+                                    href={`/anime/${article.title.replace(/\s+/g, "-")}`}
                                     className="inline-block bg-secondary bg-opacity-55 active:scale-105 ease-linear 
                                     text-name px-4 py-2 rounded hover:bg-opacity-100 transition-colors duration-300"
                                 >
