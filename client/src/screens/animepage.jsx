@@ -12,13 +12,14 @@ import { AnimeLoader } from '../components/qiwiintro';
 
 const Skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+
 export function AnimePage() {
     const [articleInfo, setArticleInfo] = useState(undefined);
     const setToastMsg = useSetRecoilState(toastMsgAtom);
     const [loading, setLoading] = useState(true);
     let { articleTitle } = useParams();
-    articleTitle = articleTitle.split("-").join(" ");
 
+    articleTitle = articleTitle.split("-").join(" ");
     useEffect(() => {
         window.scrollTo({
             top: 0,
